@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Currency</string>
+    <string name="country_list">Country List</string>
+</resources>
