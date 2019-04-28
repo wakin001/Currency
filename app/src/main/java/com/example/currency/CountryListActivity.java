@@ -83,6 +83,7 @@ public class CountryListActivity extends BaseActivity
     {
         super.onBackPressed();
 
+        // save currency locally.
         SaveFileTask saveFileTask = new SaveFileTask(mainModel.getCurrencyInfos(), this, "country_list");
         WorkThread.getInstance().AddTask(saveFileTask);
     }

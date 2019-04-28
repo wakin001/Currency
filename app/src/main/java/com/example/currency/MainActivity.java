@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity
     {
         super.onResume();
 
+        // load currency from local file.
         LoadFileTask loadFileTask = new LoadFileTask("country_list", this);
         WorkThread.getInstance().AddTask(loadFileTask);
     }
