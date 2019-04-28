@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 
 import com.example.currency.Common.Constants;
 import com.example.currency.Common.WorkThread;
@@ -45,6 +46,13 @@ public class BaseActivity extends AppCompatActivity
 				handleMainThreadMessage(msg);
 			}
 		};
+	}
+
+	@Override
+	protected void onStop()
+	{
+		super.onStop();
+		WorkThread.getInstance().quit();
 	}
 
 	/**

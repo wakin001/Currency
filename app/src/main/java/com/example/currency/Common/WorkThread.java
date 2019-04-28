@@ -3,6 +3,7 @@ package com.example.currency.Common;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.currency.WorkTask.BaseTask;
 
@@ -34,11 +35,11 @@ public class WorkThread extends HandlerThread
      */
     public void startThread()
     {
+        Log.d("thread", "start work thread");
         if (!isAlive())
         {
             start();
         }
-
         workHandler = new Handler(getLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -49,12 +50,23 @@ public class WorkThread extends HandlerThread
         };
     }
 
+    @Override
+    public boolean quit()
+    {
+        instance = null;
+        return super.quit();
+    }
+
     /**
      * Add a task into message queue.
      * @param task The task to add.
      */
     public void AddTask(BaseTask task)
     {
+        if (!isAlive())
+        {
+            startThread();
+        }
         Message message = workHandler.obtainMessage();
         message.what = task.getMessageType();
         message.obj = task;

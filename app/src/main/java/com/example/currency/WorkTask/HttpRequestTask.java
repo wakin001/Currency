@@ -37,9 +37,17 @@ public class HttpRequestTask extends BaseTask
         {
             URL url = new URL(urlPath);
             urlConnection = (HttpURLConnection)url.openConnection();
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            urlConnection.connect();
 
-            CallMainThread(messageType, readStream(in));
+            switch (urlConnection.getResponseCode())
+            {
+                case HttpURLConnection.HTTP_OK:
+                {
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    CallMainThread(messageType, readStream(in));
+                    break;
+                }
+            }
         }
         catch (MalformedURLException e)
         {
