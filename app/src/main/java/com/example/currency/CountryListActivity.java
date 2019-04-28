@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.currency.Common.WorkThread;
 import com.example.currency.WorkTask.SaveFileTask;
@@ -37,6 +38,8 @@ public class CountryListActivity extends BaseActivity
         mainModel = (MainModel) model;
 
         updateView();
+
+        Toast.makeText(context, "Press back button after you select countries.", Toast.LENGTH_LONG).show();
     }
 
     @Override

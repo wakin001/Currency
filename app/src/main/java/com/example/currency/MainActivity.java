@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.currency.Common.Constants;
 import com.example.currency.Common.WorkThread;
@@ -85,6 +86,8 @@ public class MainActivity extends BaseActivity
                 mainLayout.addView(textView);
             }
         }
+
+        Toast.makeText(context, "Add more countries by pressing the ADD button.", Toast.LENGTH_LONG).show();
     }
 
     @Override

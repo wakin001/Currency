@@ -68,6 +68,12 @@ public class MainModel extends BaseModel
 
     public MainModel()
     {
+        // default value
+        CurrencyInfo info = new CurrencyInfo("CNY", "Chinese Yuan", true, 672.89);
+        currencyInfos.put(info.getCountryShortName(), info);
+
+        info = new CurrencyInfo("RSD", "Serbian Dinar", true, 10566);
+        currencyInfos.put(info.getCountryShortName(), info);
     }
 
     public HashMap<String, CurrencyInfo> getCurrencyInfos()
